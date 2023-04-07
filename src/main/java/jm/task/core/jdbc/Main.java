@@ -1,42 +1,26 @@
 package jm.task.core.jdbc;
 
-import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
+import jm.task.core.jdbc.service.UserService;
+import jm.task.core.jdbc.service.UserServiceImpl;
 import jm.task.core.jdbc.util.Util;
 
 public class Main {
     public static void main(String[] args) {
 
-//        Util util = new Util();
-//        UserServiceImpl userService = new UserServiceImpl();
-//
-//        userService.createUsersTable();
-//
-//        userService.saveUser("Ivan", "Petrov", (byte) 35);
-//        userService.saveUser("Nikolay", "Sidorov", (byte) 41);
-//        userService.saveUser("Petr", "Ivanov", (byte) 28);
-//        userService.saveUser("Sergey", "Smirnov", (byte) 56);
-//
-//        userService.getAllUsers();
-//
-//        userService.cleanUsersTable();
-//
-//        userService.dropUsersTable();
+        UserService userService = new UserServiceImpl();
 
+        userService.createUsersTable();
 
-        UserDaoHibernateImpl us = new UserDaoHibernateImpl();
+        userService.saveUser("Ivan", "Petrov", (byte)35);
+        userService.saveUser("Nikolay", "Sidorov", (byte) 41);
+        userService.saveUser("Petr", "Ivanov", (byte) 28);
+        userService.saveUser("Sergey", "Smirnov", (byte) 56);
 
-        us.createUsersTable();
+        userService.getAllUsers();
 
-        us.saveUser("Ivan", "Petrov", (byte)35);
-        us.saveUser("Nikolay", "Sidorov", (byte) 41);
-        us.saveUser("Petr", "Ivanov", (byte) 28);
-        us.saveUser("Sergey", "Smirnov", (byte) 56);
+        userService.cleanUsersTable();
 
-        us.getAllUsers();
-
-        us.cleanUsersTable();
-
-        us.dropUsersTable();
+        userService.dropUsersTable();
 
         Util.closeSessionFactory();
 
